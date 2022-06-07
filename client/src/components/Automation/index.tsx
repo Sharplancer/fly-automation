@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, Button, Row, Col,Container } from 'react-bootstrap';
 import { requestForm } from '../../store/form-slice';
 import { COUNTRY, GENDER } from '../../utils';
 
 const AutomationComponent = () => {
+  const dispatch = useDispatch();
 
   const firstNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const lastNameRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -22,7 +24,7 @@ const AutomationComponent = () => {
     const password: string = passwordRef.current.value;
     const gender: string = genderRef.current.value;
     const country: string = countryRef.current.value;
-
+    dispatch<any>(requestForm(firstName, lastName, userName, email, password, gender, country));
   }
 
   return(
