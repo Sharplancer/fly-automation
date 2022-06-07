@@ -11,12 +11,12 @@ React, React-redux, Hooks, React-bootstrap
 Node.js, Puppeteer
 
 ## Project Strucure
-###client
+### client
 `cd client`
 `npm install`
 `npm start`
 Client will be run on `http://localhost:3000`
-###server
+### server
 `cd server`
 `npm install`
 `npm start`
