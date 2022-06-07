@@ -34,7 +34,7 @@ const formAutomation = async (firstName, lastName, userName, email, password, ge
 const dataScraping = async (url) => {
   const newBrowser = await puppeteer.launch({ headless: true });
   const page = await newBrowser.newPage();
-  await page.goto(url, {waitUntil: 'networkidle2'});
+  await page.goto(url, {waitUntil: 'domcontentloaded'});
 
   const scrapedData = await page.evaluate(async () => {
     let [firstName] = document.querySelectorAll(".closet__header__info__user-details .d--fl .ellipses");
@@ -49,6 +49,7 @@ const dataScraping = async (url) => {
     }
   })
   await newBrowser.close();
+  console.log(scrapedData);
   return scrapedData;
 }
 
