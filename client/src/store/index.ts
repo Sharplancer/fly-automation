@@ -7,8 +7,12 @@ import {
   } from "@reduxjs/toolkit";
   
   // slices
+  import formsSlice from "./form-slice";
+  import scrapingSlice from "./scraping-slice";
   
   const combinedReducer = combineReducers({
+    forms: formsSlice.reducer,
+    scraping: scrapingSlice.reducer,
   });
   
   export type RootState = ReturnType<typeof combinedReducer>;

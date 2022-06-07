@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container, FormControl, InputGroup, Card, Spinner, Form } from 'react-bootstrap';
 
 import { requestScraping } from '../../store/scraping-slice';
@@ -7,10 +6,6 @@ import { RootState } from '../../store/index';
 import { Data } from '../../utils/types';
 
 const ScrapingComponent = () => {
-  const dispatch = useDispatch();
-
-  const status: string = useSelector((state: RootState) => state.scraping.status);
-  const data: Data = useSelector((state: RootState) => state.scraping.data);
   const urlRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [url, setUrl] = useState('');
   const [validated, setValidated] = useState(false);
@@ -31,10 +26,8 @@ const ScrapingComponent = () => {
       event.stopPropagation();
     } else {
       if (urlPatternValidation(url))
-        dispatch<any>(requestScraping(url));
+
     }
-//      if(validated === true);
-//        dispatch<any>(requestScraping(url));
     setValidated(true);
   }
   return(
